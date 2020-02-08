@@ -56,36 +56,3 @@ class LeadChange(MeasureTemplate):
             mValue = (sqrt(fac1) + sqrt(fac2))/2
         self._measureValue = mValue
         
-if __name__ == '__main__':
-    import GameQualityAssessment.code_pac.brasileiro.model as brasileiroModel
-    import GameQualityAssessment.code_pac.model as model
-    import GameQualityAssessment.code_pac.measures as measures
-    
-    from GameQualityAssessment.code_pac import dataBaseAdapter
-    import GameQualityAssessment.code_pac.desafio.model as desafioModel
-    
-    #set the test type (brasileiro = 1, desafio = 2)
-    testType = 1
-    
-    #set desafioGame data
-    tournamentCode = 123
-    seriesCode = 264
-    groupCode = 10886
-    
-    
-    if testType == 1:
-        games = brasileiroModel.Game.retrieveList()
-        for game in games:
-            print (game.year)
-            print (measures.LeadChange(game=model.BrasileiroGame(game), ignored=0).getMeasureValue())
-            print ('===================')
-    elif testType == 2:
-        conn = dataBaseAdapter.getConnection()
-        tournament = desafioModel.Tournament.retrieve(tournamentCode, conn)
-        series = desafioModel.Series.retrieve(tournament, seriesCode, conn)
-        game = desafioModel.Game(series, groupCode)
-        print (tournament.refYear)
-        print (measures.LeadChange(game=model.DesafioGame(game), ignored=1).getMeasureValue())
-        print ('================')
-        
-    

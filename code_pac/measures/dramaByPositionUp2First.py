@@ -35,25 +35,3 @@ class DramaByPositionUp2First(MeasureTemplate):
                             dist += math.sqrt(totalScores.index(t) / len(totalScores))
                             break
         self._measureValue = dist / count if count > 0 else 0 
-
-if __name__ == "__main__":
-    from GameQualityAssessment.code_pac import dataBaseAdapter
-    import GameQualityAssessment.code_pac.desafio.model as desafioModel
-    import GameQualityAssessment.code_pac.model as model
-    from GameQualityAssessment.code_pac.gamePlots import GamePlots
-    
-    connection = dataBaseAdapter.getConnection()
-    tournament = desafioModel.Tournament.retriveList(connection)[0]
-    series = desafioModel.Series.retrieveList(tournament, connection)[0]
-    game = desafioModel.Game.retrieveList(series, connection)[6]
-    obj = model.DesafioGame(game)
-    value = DramaByPositionUp2First(game=obj, ignored=1)
-    #game.storeMeasure(value,connection)
-    print (value.getWinner(), value.getMeasureValue())
-    
-    print (value.getType().description)
-    dataBaseAdapter.closeConnection(connection)
-    GamePlots(obj).byPosition()
-    
-    
-    

@@ -57,26 +57,3 @@ class DramaByPaths(MeasureTemplate):
         if pos == 0:
             raise Exception('Winner is not in gameRound')
         return pos
-    
-if __name__ == "__main__":
-    from GameQualityAssessment.code_pac import dataBaseAdapter
-    from GameQualityAssessment.code_pac.gamePlots import GamePlots
-    import GameQualityAssessment.code_pac.desafio.model as desafioModel
-    import GameQualityAssessment.code_pac.model as model
-    
-    connection = dataBaseAdapter.getConnection()
-    tournament = desafioModel.Tournament.retriveList(connection)[0]
-    series = desafioModel.Series.retrieveList(tournament, connection)[0]
-    game = desafioModel.Game.retrieveList(series, connection)[5]
-    obj = model.DesafioGame(game)
-    value = DramaByPaths(game=obj, ignored=1)
-    #game.storeMeasure(value,connection)
-    print (value.getWinner(), value.getMeasureValue())
-    
-    print (value.getType().description)
-    print (game.tournamentCode, " ", game.seriesCode, " ", game.groupCode)
-    dataBaseAdapter.closeConnection(connection)
-    GamePlots(obj).byPosition()
-    
-    
-    
