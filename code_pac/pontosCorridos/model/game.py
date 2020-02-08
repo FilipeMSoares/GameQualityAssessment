@@ -8,7 +8,6 @@ import os
 import configparser
 import json
 from GameQualityAssessment.code_pac.configReader import ConfigReader
-from GameQualityAssessment.code_pac.desafio.aux_old.modelo_old import Player
 
 class Game:
     def __init__(self, country, year, gameRounds=None):

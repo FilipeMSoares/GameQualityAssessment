@@ -1,8 +1,0 @@
-Eventos interessantes para analisar com os dados da fórmula 1 e comparar com o twitter:
-
-from http://blog.ouseful.info/tag/f1datajunkie
-
-- Undercuts
-- Battles
-
-prize.tatacommunications.com é um site com informações e uma competição de aplicações com os dados.

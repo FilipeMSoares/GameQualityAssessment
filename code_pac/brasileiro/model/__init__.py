@@ -1,1 +1,0 @@
-from GameQualityAssessment.code_pac.brasileiro.model.game import Game
