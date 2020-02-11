@@ -23,6 +23,7 @@ class FootballView(wx.Frame):
         self.dataGrid.SetRowLabelValue(2,"Lead Change")
         self.dataGrid.SetRowLabelValue(3,"Overall Eval.")
         self.Bind(wx.EVT_SIZE,self.__resize)
+        self.graphShow.Bind(wx.EVT_NOTEBOOK_PAGE_CHANGED, self.__page_changed)
         self.gameExplorer.Bind(wx.EVT_TREE_SEL_CHANGED, self.__setData)
 
         self.__setData(None)
@@ -30,6 +31,11 @@ class FootballView(wx.Frame):
     def __resize(self,event):
         self.Layout()
         self.graphShow.GetCurrentPage().set_size()
+
+    def __page_changed(self,event):
+        self.Layout()
+        value = event.GetSelection()
+        self.graphShow.GetPage(value).set_size()
     
     def __declareVariables(self):
         self.mainPanel = wx.Panel(self)
@@ -178,6 +184,7 @@ class FootballView(wx.Frame):
             panel_points.set_size()
             panel_positions.draw()
             panel_positions.set_size()
+        self.__resize(None)
         pass
 
 if __name__ == "__main__":
