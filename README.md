@@ -3,6 +3,14 @@ GameQualityAssessment
 
 The code_pac folder contains python 3 code files, including executables to launch graphical user interfaces that allow data viewing.
 
+Requirements
+---------
+On Ubuntu:
++ Check if python, pip and venv are installed
++ Check if the following libraries are installed: postgresql, libpq-dev, pkg-config, libgtk-3-dev, freeglut3-dev, libfreetype6-dev
+On Windows:
++ matplotlib and wxPython may request installing Visual C++ Compiler for Python from Microsoft
+
 Installation Process
 ---------
 In order to run the program, one need to follow the steps below:
@@ -16,12 +24,13 @@ git clone https://github.com/FilipeMSoares/GameQualityAssessment.git
 python -m venv GameQualityAssessment
 ```
 + Activate the virtual environment
+On Windows, use:
 ```
 GameQualityAssessment\Scripts\activate
 ```
-or
+On Ubuntu use:
 ```
-GameQualityAssessment/Scripts/activate
+source GameQualityAssessment/bin/activate
 ```
 + Copy and paste this code on a empty python script and run it:
 ```
